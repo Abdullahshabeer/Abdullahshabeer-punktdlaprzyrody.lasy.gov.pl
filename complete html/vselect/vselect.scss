@@ -1,0 +1,125 @@
+// @import "tailwindcss/base";
+// @import "tailwindcss/components";
+// @import "tailwindcss/utilities";
+
+.vselect-container {
+  background-color: white;
+
+  .vselect-display-container {
+    position: relative;
+    cursor: pointer;
+
+    &.active {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+
+    .vselect-search-box {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      padding: 0.25rem 0.25rem;
+    }
+
+    .vselect-search-input {
+      width: calc(100% - 2rem); height: 100%;
+      padding: 0 1rem;
+    }
+  }
+
+  .vselect-display-text {
+    display: block;
+    white-space: nowrap; /* Prevents text from wrapping to a new line */
+    overflow: hidden; /* Hides any overflowing text */
+    text-overflow: ellipsis;
+    font-weight: 600;
+    padding: 1rem 2rem 1rem 1rem;
+    border: 1px solid #f0f0f0;
+  }
+
+  .vselect-collapse-toggle {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    right: 0.5rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.active {
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .vselect-tray-container {
+    position: relative;
+    // overflow: hidden;
+
+    .vselect-tray {
+      overflow: auto;
+      padding: 1rem 0 1rem 0;
+      background-color: white;
+      border: 1px solid #f0f0f0;
+
+      &.dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        z-index: 10;
+      }
+    }
+  }
+
+  &.single-select {
+    .vselect-option.vselect-option-solo,
+    .vselect-option.vselect-option-child {
+      &:hover {
+        background-color: #00ccff11;
+      }
+
+      &.active {
+        background-color: #fc0;
+      }
+
+      &.active:hover {
+        background-color: #fc0;
+      }
+
+      label {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.vselect-global,
+.vselect-option {
+  padding: 0.25rem 2rem 0.25rem 1rem;
+  display: flex;
+  align-items: center;
+
+  input[type="checkbox"] {
+    margin-right: 0.5rem;
+  }
+
+  &.level1 { padding-left: 2rem; }
+  &.level2 { padding-left: 3rem; }
+}
+
+.vselect-option {
+  &.vselect-option-group {
+    position: relative;
+  }
+
+  &.vselect-option-child {
+    padding-left: 2rem;
+  }
+}

@@ -1,0 +1,232 @@
+<>
+           
+             
+        <InspectorControls>
+            <PanelBody title="Repeater Settings">
+            <TextControl
+                    label="Section Title"
+                    value={attributes.postsectiontitle}
+                    onChange={(newTitle) => setAttributes({ postsectiontitle: newTitle })}
+                />
+               
+                <TextControl
+                    label="post section title"
+                    value={attributes.postperpage ? attributes.postperpage.toString() : ''}
+                    onChange={handleChange}
+                />
+                 <SelectControl
+                    label="Select Design"
+                    value={firststyle}
+                    options={ selectdesign}
+                    onChange={(newStyle) => setAttributes({ firststyle: newStyle })}
+                />
+                <SelectControl
+                    label="Select Post Type"
+                    value={postType}
+                    options={getPostTypeOptions()}
+                    onChange={onPostTypeChange}
+                />
+                <SelectControl
+                    label="Select Category"
+                    value={selectedCategory}
+                    options={categoryOptions}
+                    onChange={onCategoryChange}
+                    disabled={!categoryOptions.length}
+                />
+               
+                 <TextControl
+                    label="search button Title"
+                    value={attributes.postsearchtitletitle}
+                    onChange={(newTitle) => setAttributes({ postsearchtitletitle: newTitle })}
+                />
+                <TextControl
+                    label="Button url"
+                    value={attributes.searchButtonURL}
+                    onChange={(newURL) => setAttributes({ searchButtonURL: newURL })}
+                />
+            </PanelBody>
+        </InspectorControls>
+ {firststyle === 'style1' && (  
+    <section className="block-row nabory-sec">     
+		<div class="container">
+			<div class="web-heading heading-divider">
+            <h2>{attributes.postsectiontitle}</h2>
+			</div>
+			<div class="carousel-block">
+				<div class="owl-carousel owl-theme nabory-carousel">
+           {postsData.map((post) => (
+               <div className="item" key={post.id}>
+               <div class="article-card card-style-1">
+                   <div class="article-featured-img">
+                   {post._embedded['wp:featuredmedia']?.[0]?.source_url && (
+                   <img
+                       src={post._embedded['wp:featuredmedia'][0].source_url}
+                       alt={post.title.rendered}
+                       title={post.title.rendered}
+                   />
+                   )}
+                   </div>
+                   <div class="article-content">
+                       <h3>{post.title.rendered}</h3>
+                       {post._embedded['author']?.[0]?.name && (
+                   <div class="author"><span>{post._embedded['author']?.[0]?.name}</span></div>
+                   )}
+                      
+                       <div class="status-recruitment d-flex align-items-center">
+                       {post._embedded['wp:term']?.[0]?.[0]?.name && (
+                        <div className="status-sec">
+                            <span>{post._embedded['wp:term'][0][0].name}</span>
+                        </div>
+                        )}
+                           
+                           <span dangerouslySetInnerHTML={{ __html: stripHtmlTags(post.excerpt.rendered) }}></span>
+                       </div>
+                       <div class="web-btn text-end">
+                           <a href={post.link} class="btn btn-primary"><span class="visually-hidden">{post.title.rendered}</span> szczegóły</a>
+                       </div>
+                   </div>
+               </div>
+           </div>
+              
+           ))}
+           </div>
+       </div>
+       {attributes.postsearchtitletitle && 
+       
+       <div className="web-btn view-all-btn text-end">
+           <a href={ attributes.searchButtonURL} className="btn btn-transparent">
+               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                   <circle cx="6.41667" cy="6.41667" r="5.41667" stroke="#003399" stroke-width="2"/>
+                   <path d="M14 14L10.5 10.5" stroke="#003399" stroke-width="2" stroke-linecap="round"/>
+               </svg>
+               <span>{attributes.postsearchtitletitle}</span>
+               <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 15" fill="none">
+                   <path d="M1.00017 1.38281L6.61719 6.99983L1.00017 12.6169" stroke="#003399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+               </svg>
+           </a>
+       </div>
+       }
+       
+       </div>
+  </section>
+
+   )}
+           
+            
+ {firststyle === 'style2' && (   
+          <section class="block-row szkolenia-sec light-bg">
+          <div class="container">
+              <div class="web-heading heading-divider">
+              <h2>{attributes.postsectiontitle}</h2>
+              </div>
+              <div class="carousel-block">
+                  <div class="owl-carousel owl-theme szkolenia-carousel">
+                  {postsData.map((post) => (    
+                      <div class="item">
+                          <div class="article-card card-style-2">
+                              <div class="article-featured-img">
+                              {post._embedded['wp:featuredmedia']?.[0]?.source_url && (
+                                <img
+                                    src={post._embedded['wp:featuredmedia'][0].source_url}
+                                    alt={post.title.rendered}
+                                    title={post.title.rendered}
+                                />
+                                )}
+                              </div>
+                              <div class="article-content">
+                                  <h3>{post.title.rendered}</h3>
+                                  <p dangerouslySetInnerHTML={{ __html: stripHtmlTags(post.excerpt.rendered) }}></p>
+                                  <div class="article-meta d-flex align-items-center justify-content-between">
+                                      <div class="date-location d-flex align-items-center">
+                                          <div class="date-sec">{getdateandtime(post.date)}</div>
+                                          <div class="location-sec d-flex"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="23" viewBox="0 0 18 23" fill="none">
+                                            <g id="Group 42612">
+                                            <path id="Ellipse 208" d="M18 9C18 15.9706 10 23 9 23C8 23 0 15.9706 0 9C0 4.02944 4.02944 0 9 0C13.9706 0 18 4.02944 18 9Z" fill="#43516F"/>
+                                            <circle id="Ellipse 209" cx="9" cy="9" r="4" fill="#EEF3FF"/>
+                                            </g>
+                                            </svg>{post.meta.custom_text_field}</div>
+                                      </div>
+                                      <div class="web-btn text-end">
+                                          <a href={post.link} class="btn btn-primary">szczegóły</a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                   ))}    
+                      
+                  </div>
+              </div>
+              {attributes.postsearchtitletitle && 
+              <div class="web-btn view-all-btn text-end">
+                  <a href={ attributes.searchButtonURL} class="btn btn-transparent">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                          <circle cx="6.41667" cy="6.41667" r="5.41667" stroke="#003399" stroke-width="2"/>
+                          <path d="M14 14L10.5 10.5" stroke="#003399" stroke-width="2" stroke-linecap="round"/>
+                      </svg>
+                      <span>{attributes.postsearchtitletitle}</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 15" fill="none">
+                          <path d="M1.00017 1.38281L6.61719 6.99983L1.00017 12.6169" stroke="#003399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                  </a>
+              </div>
+}
+          </div>
+      </section>
+
+
+   )}  
+   {firststyle === 'style3' && ( 
+
+<section class="block-row aktualnosci-sec">
+<div class="container">
+    <div class="web-heading heading-divider">
+    <h2>{attributes.postsectiontitle}</h2>
+    </div>
+    <div class="carousel-block">
+        <div class="owl-carousel owl-theme aktualnosci-carousel">
+        {postsData.map((post) => (    
+            <div class="item">
+                <div class="article-card card-style-3">
+                    <div class="article-featured-img">
+                    {post._embedded['wp:featuredmedia']?.[0]?.source_url && (
+                                <img
+                                    src={post._embedded['wp:featuredmedia'][0].source_url}
+                                    alt={post.title.rendered}
+                                    title={post.title.rendered}
+                                />
+                                )}
+                    </div>
+                    <div class="article-content">
+                        <div class="date-sec"><span>{secondtime(post.date)}</span></div>
+                        <h3>{post.title.rendered}</h3>
+                        <div class="web-btn">
+                            <a href={post.title.rendered} class="btn btn-primary">czytaj</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        ))}  
+            
+        </div>
+    </div>
+    {attributes.postsearchtitletitle && 
+    <div class="web-btn view-all-btn text-end">
+        <a href={ attributes.searchButtonURL} class="btn btn-transparent">
+            <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 15 15" fill="none">
+                <circle cx="6.41667" cy="6.41667" r="5.41667" stroke="#003399" stroke-width="2"/>
+                <path d="M14 14L10.5 10.5" stroke="#003399" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <span>{attributes.postsearchtitletitle}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 15" fill="none">
+                <path d="M1.00017 1.38281L6.61719 6.99983L1.00017 12.6169" stroke="#003399" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </div>
+}
+</div>
+</section>
+  
+  )} 
+         
+ </> 
