@@ -1,20 +1,22 @@
-Project Overview
-This project is a full WordPress theme conversion of the official Polish government website Punkt Dla Przyrody. It includes a custom WordPress theme built from the original HTML structure and a Gutenberg plugin to manage various sections of the website.
+# Punkt Dla Przyrody – WordPress Theme & Gutenberg Plugin  
 
-Features
-✅ Complete conversion of the original HTML structure into a WordPress theme
-✅ A separate folder containing the original HTML code
-✅ A custom Gutenberg plugin for managing different sections of the website
-✅ Multiple Gutenberg blocks developed for flexible content editing
+## Project Overview  
+This project is a **full WordPress theme conversion** of the official Polish government website **[Punkt Dla Przyrody](https://punktdlaprzyrody.lasy.gov.pl/)**. It includes a **custom WordPress theme** built from the original HTML structure and a **Gutenberg plugin** to manage various sections of the website.  
 
-Folder Structure
-📂 theme/ – Custom WordPress theme (HTML, CSS, and JavaScript converted into a theme)
-📂 gutenberg-plugin/ – Custom Gutenberg plugin for managing sections
+## Features  
+✅ Complete conversion of the original **HTML structure into a WordPress theme**  
+✅ A separate folder containing the **original HTML code**  
+✅ A **custom Gutenberg plugin** for managing different sections of the website  
+✅ Multiple **Gutenberg blocks** developed for flexible content editing  
 
-Technologies Used
-🔹 WordPress Theme Development
-🔹 Gutenberg Block Development
-🔹 HTML, CSS, JavaScript
-🔹 PHP
+## Folder Structure  
+📂 **theme/** – Custom WordPress theme (HTML, CSS, and JavaScript converted into a theme)  
+📂 **gutenberg-plugin/** – Custom Gutenberg plugin for managing sections  
 
-🔗 Original Government Website: Punkt Dla Przyrody
+## Technologies Used  
+🔹 WordPress Theme Development  
+🔹 Gutenberg Block Development  
+🔹 HTML, CSS, JavaScript  
+🔹 PHP  
+
+🔗 **Original Government Website:** [Punkt Dla Przyrody](https://punktdlaprzyrody.lasy.gov.pl/)  
